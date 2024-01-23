@@ -71,7 +71,7 @@ there is 3 types of Collection in swift
 
 array : 
 
-arrays can store multipal values in one place but all the values must have the same type (all int or all double ...).
+arrays can store multiple values in one place but all the values must have the same type (all int or all double ...).
 
 this is how you creat an empty array : 
 
