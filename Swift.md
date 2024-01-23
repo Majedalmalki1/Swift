@@ -1,4 +1,4 @@
-Constants and Variables : 
+# Constants and Variables : 
 
 Constants and Variables are names commected to a value (of any type), the programer declare the Constants and Variables befor using it, declaring a Constants or Variables means you took a place in memory or in rigesters so you can save a value later on. 
 
