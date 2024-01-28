@@ -1,38 +1,34 @@
-// User struct representing a registered user
 struct User {
     let username: String
     let password: String
 }
 
-// AuthManager class to manage user authentication
 class AuthManager {
     private var users: [User] = []
 
     func register(username: String, password: String) {
         let newUser = User(username: username, password: password)
         users.append(newUser)
-        print("Registration successful!")
+        print("Registration successful!\n")
     }
 
     func signIn(username: String, password: String) -> User? {
         if let user = users.first(where: { $0.username == username && $0.password == password }) {
-            print("Welcome, \(user.username)!")
+            print("\n----Welcome, \(user.username)!----\n")
             return user
         } else {
-            print("Invalid username or password. Sign in failed.")
+            print("Invalid username or password. Sign in failed.\n")
             return nil
         }
     }
 }
 
-// PCPart struct representing a PC component
 struct PCPart {
     let name: String
     let category: String
     let price: Double
 }
 
-// ShoppingCart struct to manage the user's shopping cart
 struct ShoppingCart {
     var items: [PCPart] = []
 
@@ -41,7 +37,6 @@ struct ShoppingCart {
     }
 }
 
-// PCShop class representing the PC shop and its inventory
 class PCShop {
     var inventory: [PCPart]
 
@@ -54,7 +49,7 @@ class PCShop {
     }
 
     func displayInventory() {
-        print("Available PC Parts:")
+        print("Available PC Parts:\n")
         for (index, part) in inventory.enumerated() {
             print("\(index + 1). \(part.name) (\(part.category)) - $\(part.price)")
         }
@@ -69,7 +64,7 @@ class PCShop {
             let selectedPart = try getPart(at: partIndex)
             let orderTotal = selectedPart.price * Double(quantity)
 
-            print("Added \(quantity) \(selectedPart.name) to your cart. Total: $\(orderTotal)")
+            print("\nAdded \(quantity) \(selectedPart.name) to your cart. Total: $\(orderTotal)/n")
 
             for _ in 1...quantity {
                 cart.items.append(selectedPart)
@@ -94,31 +89,29 @@ var authenticatedUser: User?
 // Main program
 while true {
     if let user = authenticatedUser {
-        // User is authenticated
         var pcShop = PCShop(inventory: [
           PCPart(name: "CPU", category: "Processor", price: 299.99),
           PCPart(name: "GPU", category: "Graphics Card", price: 499.99),
           PCPart(name: "RAM", category: "Memory", price: 79.99),
           PCPart(name: "SSD", category: "Storage", price: 129.99),
           PCPart(name: "Motherboard", category: "Motherboard", price: 199.99),
-            // ... (other PC parts)
         ])
 
         var userCart = ShoppingCart()
 
-        print("Welcome to the PC Shop!")
+        print("----THIS IS 10M PC SHOP----\n")
 
            ShoppingLoop: while authenticatedUser != nil {
             pcShop.displayInventory()
 
-            print("\nOptions:")
+            print("\nOptions:\n")
             print("1. Add item to cart")
             print("2. View cart")
             print("3. Checkout")
-            print("4. Logout and go back to the main menu")
+            print("4. Logout and go back to the main menu\n")
            
 
-            print("Enter your choice: ", terminator: "")
+            print("Enter your choice: \n", terminator: "")
 
             if let shopChoice = readLine(), let intShopChoice = Int(shopChoice) {
                 switch intShopChoice {
@@ -128,7 +121,7 @@ while true {
                         print("Enter the quantity: ", terminator: "")
                         if let quantity = readLine(), let intQuantity = Int(quantity) {
                             do {
-                                try pcShop.orderPart(partIndex: intPartIndex, quantity: intQuantity, cart: &userCart)
+                                try pcShop.orderP-art(partIndex: intPartIndex, quantity: intQuantity, cart: &userCart)
                             } catch {
                                 print("Error: \(error)")
                             }
@@ -139,7 +132,7 @@ while true {
                         print("Invalid part number.")
                     }
                 case 2:
-                    print("\nYour Shopping Cart:")
+                    print("\nYour Shopping Cart:\n")
                     for (index, item) in userCart.items.enumerated() {
                         print("\(index + 1). \(item.name) (\(item.category)) - $\(item.price)")
                     }
@@ -164,9 +157,9 @@ while true {
         }
     } else {
         // User is not authenticated
-        print("Options:")
+        print("Options:\n")
         print("1. Register")
-        print("2. Sign In")
+        print("2. Sign In\n")
        
 
         print("Enter your choice: ", terminator: "")
@@ -178,7 +171,6 @@ while true {
 
             case 2:
                 if let user = signInUser() {
-                    print("Welcome, \(user.username)!")
                     authenticatedUser = user
                 }
 
