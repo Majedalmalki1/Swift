@@ -121,7 +121,7 @@ while true {
                         print("Enter the quantity: ", terminator: "")
                         if let quantity = readLine(), let intQuantity = Int(quantity) {
                             do {
-                                try pcShop.orderP-art(partIndex: intPartIndex, quantity: intQuantity, cart: &userCart)
+                                try pcShop.orderPart(partIndex: intPartIndex, quantity: intQuantity, cart: &userCart)
                             } catch {
                                 print("Error: \(error)")
                             }
